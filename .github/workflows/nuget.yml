@@ -2,8 +2,10 @@ name: Publish Nuget Package
 on:
   workflow_dispatch:
   push:
+    tags:
+      - '*'
     branches:
-    - main
+      - 'main'
 jobs:
   build:
     name: build / deploy nuget package
