@@ -1,0 +1,24 @@
+name: Publish Nuget Package
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+jobs:
+  build:
+    name: build / deploy nuget package
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET 6.0.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+#     - name: Restore dependencies
+#       run: dotnet restore src/BlazorTestApp/TestBrazor/TestBrazor.csproj
+#     - name: dotnet build
+#       run: dotnet build src/BlazorTestApp/TestBrazor/TestBrazor.csproj /P:Configuration=Release /p:GeneratePackageOnBuild=false
+    - name: dotnet pack
+      run: dotnet pack src/BlazorTestApp/TestBrazor/TestBrazor.csproj --output . --configuration Release
+    - name: dotnet nuget push
+      run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
