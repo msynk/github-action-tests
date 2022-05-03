@@ -6,7 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<PackageId>Msynk.TestBrazor</PackageId>
-		<Version>1.1.1</Version>
+		<Version>1.1.2</Version>
 		<Authors>msynk</Authors>
 		<Company>msynk</Company>
 	</PropertyGroup>
