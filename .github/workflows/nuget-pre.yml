@@ -6,7 +6,7 @@ on:
       - 'v-*'
 jobs:
   build:
-    name: build / deploy prerelease nuget package
+    name: build & publish prerelease nuget package
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
