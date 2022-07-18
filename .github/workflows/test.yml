@@ -1,0 +1,21 @@
+name: Test CI
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+    - 'src/**'
+jobs:
+  build-test-prerelease:
+    if: startsWith(github.event.pull_request.title, 'Prerelease')
+    name: prerelease
+    runs-on: windows-latest
+    steps:
+    - name: Echo prerelease
+      run: echo 'this is prerelease'
+  build-test:
+    if: startsWith(github.event.pull_request.title, 'Prerelease') != true
+    name: normal
+    runs-on: windows-latest
+    steps:
+    - name: Setup .NET 6.0.x
+      run: echo 'thi is NOT prerelease
