@@ -17,5 +17,5 @@ jobs:
     name: normal
     runs-on: windows-latest
     steps:
-    - name: Setup .NET 6.0.x
-      run: echo 'thi is NOT prerelease
+    - name: Echo normal
+      run: echo 'thi is NOT prerelease'
